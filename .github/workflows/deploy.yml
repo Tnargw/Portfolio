@@ -1,0 +1,46 @@
+name: Deploy to Surge
+on:
+  push:
+    branches: [ main ] # change if you deploy from another branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+
+      # Build your site (edit this if your build script is different)
+      - run: npm run build
+
+      # Make SPA routing work (copies index -> 200 if folder exists)
+      - name: Add 200.html for SPA (dist)
+        if: ${{ hashFiles('dist/index.html') != '' }}
+        run: cp dist/index.html dist/200.html
+      - name: Add 200.html for SPA (build)
+        if: ${{ hashFiles('build/index.html') != '' }}
+        run: cp build/index.html build/200.html
+
+      - run: npm i -g surge
+
+      # Deploy dist/ (Vite, many static builds)
+      - name: Deploy dist
+        if: ${{ hashFiles('dist/**') != '' }}
+        run: |
+          DOMAIN=${{ secrets.SURGE_DOMAIN }}
+          if [ -z "$DOMAIN" ]; then DOMAIN=$(node -e "console.log('')"); fi
+          surge ./dist "$DOMAIN" --token ${{ secrets.SURGE_TOKEN }}
+
+      # Deploy build/ (Create React App)
+      - name: Deploy build
+        if: ${{ hashFiles('build/**') != '' }}
+        run: |
+          DOMAIN=${{ secrets.SURGE_DOMAIN }}
+          if [ -z "$DOMAIN" ]; then DOMAIN=$(node -e "console.log('')"); fi
+          surge ./build "$DOMAIN" --token ${{ secrets.SURGE_TOKEN }}
