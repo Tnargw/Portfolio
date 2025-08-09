@@ -1,0 +1,821 @@
+html{
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px #181818 inset !important;
+    -webkit-text-fill-color: #ffffff;
+    -webkit-background-color: #181818;
+}
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
+*{
+    font-weight: 100;
+}
+/* fonts */
+@font-face{
+    font-family: 'heebo-bold';
+    src: url('./assets/Heebo-Bold.ttf');
+}
+@font-face{
+    font-family: 'heebo-extra-bold';
+    src: url('./assets/Heebo-ExtraBold.ttf');
+}
+@font-face{
+    font-family: 'heebo-medium';
+    src: url('./assets/Heebo-Medium.ttf');
+}
+@font-face{
+    font-family: 'heebo-regular';
+    src: url('./assets/Heebo-Regular.ttf');
+}
+@font-face{
+    font-family: 'heebo-light';
+    src: url('./assets/Heebo-Light.ttf');
+}
+/* hero */
+.hero-container{
+    background-color: #181818;
+}
+.hero{
+    background-color: #181818;
+    color: #ffffff;
+    height: 88vh;
+    margin: none;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr ;
+    width: 76%;
+    justify-content: left;
+    margin: auto;
+}
+.hero-content{
+    grid-row-start: 2;
+    grid-column-start: 2;
+    font-size: 24px;
+    line-height: 28px;
+    height: 186px;
+}
+.hero-content > h1 {
+    font-family: 'heebo-extra-bold';
+    letter-spacing: 2px;
+}
+.hero-content > h5 {
+    font-family: 'heebo-medium';
+    letter-spacing: 1px;
+    font-weight: 200;
+}
+.hero-button{
+    font-family: 'heebo-bold';
+    letter-spacing: 3px;
+    color: #4072FF;
+    margin-top: 64px;
+    font-size: 20px
+}
+.hero-button:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.hero-animation{
+    animation: fade 400ms 2s 1 forwards linear;
+    opacity: 0;
+    position: relative;
+}
+@keyframes fade{
+    0%{
+        color: #B6B6B6;
+        opacity: 0;
+        bottom: 6px;
+    }
+    50%{
+        bottom: 4px;
+    }
+    100%{
+        opacity: 1;
+        bottom: 0px;
+        color: #FFFFFF
+    }
+}
+.turtles:hover{
+    text-decoration: underline;
+}
+/* navbar */
+.nav-bar{
+    display: flex;
+    justify-content: space-between;
+    width: 76%;
+    margin: auto;
+    color: #ffffff;
+    height: 12vh;
+    background-color: #181818;
+    align-items: center;
+}
+.nav-bar-logo{
+    font-family: 'heebo-bold';
+    letter-spacing: 4px;
+    font-size: 20px;
+    align-self: center;
+    width: 200px;
+    margin: auto;
+}
+.nav-bar-logo:hover{
+    cursor: pointer;
+}
+.nav-bar-container{
+    background-color: #181818;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+}
+.nav-bar-navigation{
+    display: flex;
+    justify-content: space-evenly;
+    width: 40%;
+    align-items: center;
+}
+.nav-bar-item{
+    font-family: 'heebo-bold';
+    font-size: 16px;
+    letter-spacing: 1px;
+    background-color: #181818;
+    border: none;
+    color: #ffffff;
+}
+.nav-bar-item:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.contact-button{
+    border: 2px solid #4072FF;
+    padding: 8px 16px;
+    letter-spacing: 3px;
+    font-family: 'heebo-bold';
+    color: #ffffff;
+    font-size: 16px;
+    background-color: #181818;
+}
+.contact-button:hover{
+    cursor: pointer;
+}
+
+
+/* project */
+.project-container {
+    height: 110vh;
+    background-color: #F5F2EE;
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+}
+.project{
+    grid-row-start: 2;
+    width: 76%;
+    margin: auto;
+}
+.project-title{
+    font-family: 'heebo-extra-bold';
+    font-size: 48px;
+    letter-spacing: 2px;
+    color: #181818;
+}
+.project-items-container {
+    display: flex;
+    justify-content: space-between;
+    height: 438px;
+}
+.project-item{
+    width: 322px;
+    position: relative;
+    background-color: #FFFFFF;
+    border: 2px solid #E9E2DA;
+    height: 438px;
+
+}
+.project-item:hover{
+    transform: translateY(-8px);
+    transition-duration: 400ms;
+    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.05);
+}
+.project-description{
+    margin: 0px 32px;
+}
+.project-description > h1 {
+    font-family: 'heebo-extra-bold';
+    font-size: 24px;
+    margin-top: 32px;
+    letter-spacing: .75px;
+    line-height: 32px;
+    color: #181818;
+}
+.project-description > h5 {
+    font-family: 'heebo-medium';
+    line-height: 18px;
+    color: #656565;
+    font-size: 14px;
+    width: 256px;
+    height: 90px;
+}
+.project-button {
+    color: #4072FF;
+    font-family: 'heebo-bold';
+    grid-row-start: 3;
+    font-size: 16px;
+    margin-top: 24px;
+    letter-spacing: 2.4px;
+}
+.project-description > h4:hover{
+    cursor: pointer;
+}
+.project-image-one{
+    height: 40%;
+    background-image: url('./assets/hoppy-frog.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.project-image-two{
+    height: 40%;
+    background-image: url('./assets/snowfall-heatmap.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.project-image-three{
+    height: 40%;
+    background-image: url('./assets/p2p-game.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* resume */
+.resume-container{
+    background-color: #181818;
+}
+.resume{
+    height: auto;
+    width: 76%;
+    margin: auto;
+    display: grid;
+    grid-template-rows: 1fr 8fr 1fr;
+}
+.resume-items{
+    grid-row-start: 2;
+}
+.resume-title{
+    display: inline-block;
+    font-weight: 800;
+    justify-content: space-between;
+    align-items: center
+}
+.resume-title > h1 {
+    color: #ffffff;
+    font-family: 'heebo-extra-bold';
+    font-size: 48px;
+    letter-spacing: 2px;
+    margin-right: 12px;
+    margin-bottom: 72px;
+    display: inline-block;
+}
+.resume-title > a > h5 {
+    color: #4072FF;
+    font-family: 'heebo-bold';
+    letter-spacing: 3px;
+    font-size: 20px;
+    display: inline-block;
+    margin-left: 24px;
+}
+.resume-title > a > h5:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+.resume-subtitle{
+    font-family: 'heebo-extra-bold';
+    font-size: 32px;
+    letter-spacing: 2px;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+}
+.resume-project-title-container > h4{
+    display: inline-block;
+    margin-right: 12px;
+}
+.resume-project-name{
+    font-size: 20px;
+    color: #FFFFFF;
+    font-family: 'heebo-regular';
+    letter-spacing: 1.2px;
+    margin-top: 54px;
+    margin-bottom: 16px;
+}
+.resume-project-title-container > a{
+    display: inline-block;
+    color: #4072FF;
+    font-family: 'heebo-bold';
+    letter-spacing: 2.4px;
+    margin: 0px 12px;
+    font-size: 20px;
+}
+.resume-project-description{
+    font-size: 16px;
+    color: #B6B6B6;
+    font-family: 'heebo-medium';
+    line-height: 24px;
+    margin: 0;
+    letter-spacing: 0.67px;
+    margin-bottom: 72px;
+}
+.resume-project-description-container{
+    width: 672px;
+}
+.resume-list{
+    color: #B6B6B6;
+    list-style: none;
+    font-family: 'heebo-medium';
+    width: 790px;
+    margin-top: 16px;
+}
+.resume-list > li {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: .67px;
+}
+.resume-accomplishments{
+    font-family: 'heebo-medium';
+    color: #B6B6B6;
+    letter-spacing: .67px;
+    padding-left: 16px;
+    border-left: 4px solid #4072FF;
+}
+.resume-job-container{
+    margin-bottom: 72px;
+}
+.skill{
+    display: inline-block;
+    color: #FFFFFF;
+    border: #4072FF 2px solid;
+    margin: 8px 8px;
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-family: 'heebo-bold';
+    text-align: center;
+}
+.skill-container{
+    margin-top: 30px;
+    width: 742px;
+    margin-bottom: 50px;
+}
+.skill > h4{
+    margin: 0px;
+    font-size: 16px;
+}
+.education{
+    height: 24px;
+    width: 760px;
+    color: #B6B6B6;
+    font-family: 'heebo-medium';
+    font-size: 16px;
+    letter-spacing: 0.67px;
+    margin: -8px 0px;
+}
+
+/* about */
+
+.about-container{
+    background-color: #F5F2EE;
+}
+.about{
+    height: 100vh;
+    width: 76%;
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    margin: auto;
+}
+.about-flex-one{
+    width: 496px;
+}
+.about-flex-one > h5 {
+    font-size: 16px;
+    color: #656565;
+    line-height: 24px;
+    font-family: 'heebo-medium';
+}
+.about-items{
+    grid-row-start: 2;
+    display: flex;
+    justify-content: space-between;
+}
+.about-title{
+    font-family: 'heebo-extra-bold';
+    font-size: 48px;
+    letter-spacing: 2px;
+    color: #181818;
+}
+.profile-pic{
+    background-image: url('./assets/grant.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 25%;
+}
+.email{
+    color: #4072FF;
+    font-size: 16px;
+    font-family: 'heebo-bold';
+    letter-spacing: 2.4px;
+    line-height: 24px;
+}
+.email:hover{
+    text-decoration: underline;
+}
+.email >h4 {
+    margin-top: 40px;
+    margin-bottom: 0;
+    line-height: 24px;
+}
+.links{
+    display: flex;
+    justify-content: space-between;
+    width: 180px;
+}
+.links> a {
+    color: #4072FF;
+    font-family: 'heebo-bold';
+    font-size: 16px;
+    letter-spacing: 2.4px;
+}
+.links > a:hover{
+    text-decoration: underline;
+}
+.say-hi{
+    color: #4072FF;
+
+}
+.say-hi:hover{
+    text-decoration: underline;
+}
+/* contact */
+.contact-container{
+    background-color: #181818;
+}
+.contact{
+    height: 90vh;
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    width: 76%;
+    margin: auto;
+}
+.contact-contents{
+    grid-row-start: 2;
+}
+.contact-title{
+    color: #ffffff;
+    font-family: 'heebo-extra-bold';
+    font-size: 48px;
+    letter-spacing: 2px;
+    margin-right: 12px;
+    margin-bottom: 72px;
+    display: inline-block;
+}
+.form-alignment{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 41px;
+    grid-row-gap: 32px;
+    width: 90%;
+}
+.input-text{
+    background-color: #181818;
+    height: 28px;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    font-family: 'heebo-medium';
+    font-size: 16px;
+    padding: 13px;
+}
+.input-type{
+    grid-column: 1/-1;
+    background-color: #181818;
+    height: 146px;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    padding: 13px;
+    font-size: 16px;
+    font-family: 'heebo-medium';
+
+}
+.input-text:focus{
+    border: 2px solid #4072FF;
+    outline: none;
+}
+.input-type:focus{
+    border: 2px solid #4072FF;
+    outline: none;
+}
+.form-button{
+    border: 2px solid #4072FF;
+    padding: 8px 16px;
+    letter-spacing: 2.4px;
+    font-family: 'heebo-bold';
+    color: #ffffff;
+    font-size: 16px;
+    background-color: #181818;
+    width: 235px;
+    height: 50px;
+    box-shadow: 2px 2px 5px #4072FF;
+}
+.status{
+    font-family: 'heebo-bold';
+    letter-spacing: 2.4px;
+    position: relative;
+    margin: 0;
+    align-self: center;
+}
+.form-button:hover{
+    background-color: #181818;
+    color: #FFFFFF;
+}
+.form-button:active{
+    box-shadow: 0px 0px 4px #4072FF;
+}
+.form-button:focus{
+    outline: none;
+}
+
+/* footer */
+.footer-container{
+    background-color: #181818;
+    height: 13vh;
+}
+.footer-content{
+    width: 76%;
+    color: #FFFFFF;
+    display: flex;
+    margin: auto;
+    border-top: rgba(255,255,255,0.2) 1px solid;
+    font-family: 'heebo-medium';
+    font-size: 14px;
+    align-items: center;
+    height: 12vh;
+}
+
+
+/* Media Queries */
+/* Tablet */
+
+/* Mobile */
+@media(max-width: 738px){
+    /* navbar */
+    .nav-bar{
+        width: 90%;
+    }
+    .nav-bar-logo{
+        font-size: 16px;
+        width: 100%;
+    }
+    .nav-bar-navigation{
+        width: 60%;
+        display: none;
+    }
+    .nav-bar-item{
+        font-size: 12px;
+    }
+    .contact-button{
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+    /* hero */
+    .hero{
+        width: 90%;
+    }
+    .hero-content >h1 {
+        font-size: 30px;
+        line-height: 1.4;
+    }
+    .hero-content > h5 {
+        font-size: 14px;
+    }
+    .hero-button{
+        font-size: 16px;
+    }
+    /* project */
+    .project{
+        width: 90%;
+        height: auto;
+        grid-template-rows: 1fr 20fr 1fr;
+    }
+    .project-title{
+        width: 50%;
+    }
+    .project-items-container {
+        /* overflow-y: scroll; */
+        overflow: auto;
+        width: 90%;
+        /* height: auto; */
+        display: inline-block;
+    }
+    .project-item{
+        width: 300px;
+        height: 90%;
+    }
+    .project-item:hover{
+        transform: translateY(0px);
+        transition-duration: 400ms;
+        box-shadow: none;
+    }
+    .project-description{
+        margin: 0px 16px;
+    }
+    .project-description > h1 {
+        margin-top: 32px;
+        letter-spacing: .75px;
+        line-height: 32px;
+    }
+    .project-description > h5 {
+        line-height: 18px;
+        color: #656565;
+        font-size: 12px;
+        width: 90%;
+        height: 90px;
+    }
+    .project-button {
+        grid-row-start: 3;
+        font-size: 16px;
+        margin-top: 24px;
+        letter-spacing: 2.4px;
+    }
+    /* resume */
+    .resume{
+        width: 90%;
+        grid-template-rows: 1fr 20fr 1fr;
+        height: auto;
+    }
+    .resume-title{
+        display: inline-block;
+        font-weight: 800;
+        align-items: center
+    }
+    .resume-title > h1 {
+        font-size: 210%;
+        margin-right: 0px;
+        margin-bottom: 50px;
+        display: inline-block;
+    }
+    .resume-title > a > h5 {
+        font-size: 12px;
+    }
+    .resume-subtitle{
+        font-size: 24px;
+        letter-spacing: 2px;
+        margin-bottom: 4px;
+    }
+    .resume-project-name{
+        font-size: 14px;
+        margin-top: 30px;
+        margin-bottom: 16px;
+    }
+    .resume-items{
+        width: 90vw;
+        margin: auto
+    }
+    .resume-project-title-container > a{
+        display: inline-block;
+        letter-spacing: 1.4px;
+        margin: 0px 12px;
+        font-size: 14px;
+    }
+    .resume-project-description{
+        font-size: 14px;
+        margin: 0;
+        letter-spacing: 0.67px;
+        margin-bottom: 30px;
+    }
+    .resume-project-description-container{
+        width: 90%;
+    }
+    .resume-list{
+        list-style: none;
+        width: 90%;
+        margin-top: 16px;
+    }
+    .resume-project-name > u{
+        font-size: 16px;
+        display: block;
+    }
+    .resume-list > li {
+        font-size: 14px;
+        letter-spacing: .30px;;
+    }
+    .resume-accomplishments{
+        letter-spacing: .1px;
+        font-size: 80%;
+        padding-left: 8px;
+        width: 100%;
+    }
+    .resume-job-container{
+        margin-bottom: 72px;
+    }
+    .skill-container{
+        margin-top: 30px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .skill > h4{
+        margin: 0px;
+        font-size: 12px;
+    }
+    .education{
+        width: 80%;
+        margin: 0px;
+    }
+    .about{
+        height: auto;
+        width: 90%;
+        display: grid;
+        grid-template-rows: 1fr 20fr 1fr;
+        margin: auto;
+    }
+    .about-flex-one{
+        width: 90%;
+    }
+    .about-flex-one > h5 {
+        font-size: 16px;
+        color: #656565;
+        line-height: 24px;
+        font-family: 'heebo-medium';
+    }
+    .about-items{
+        grid-row-start: 2;
+        display: flex;
+        flex-direction: column;
+    }
+    .about-title{
+        font-family: 'heebo-extra-bold';
+        font-size: 48px;
+        letter-spacing: 2px;
+        color: #181818;
+    }
+    .profile-pic{
+        background-position: auto;
+        width: 100%;
+        height: 400px;
+    }
+    .email{
+        font-size: 16px;
+    }
+    .email:hover{
+        text-decoration: underline;
+    }
+    .email >h4 {
+        margin-top: 40px;
+        margin-bottom: 0;
+        line-height: 24px;
+    }
+    .links{
+        display: flex;
+        justify-content: space-between;
+        width: 180px;
+    }
+    .links> a {
+        color: #4072FF;
+        font-family: 'heebo-bold';
+        font-size: 16px;
+        letter-spacing: 2.4px;
+    }
+    .links > a:hover{
+        text-decoration: underline;
+    }
+    
+    /* contact */
+    .contact{
+        width: 90%;
+        grid-template-rows: 1fr 20fr 1fr;
+        height: auto;
+        border: 2px solid #181818;
+    }
+    .form-alignment{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-row-gap: 16px;
+        height: 400px;
+    }
+    .input-text{
+        width: 70%;
+    }
+    .status{
+        font-size: 70%;
+    }
+    
+    /* footer */
+    .footer-content{
+        width: 90%;
+        border-top: white 1px solid;
+    }
+    .footer-container{
+        border: 12px solid #181818;
+    }
+}
