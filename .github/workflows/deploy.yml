@@ -1,11 +1,16 @@
 name: Deploy to Surge
 on:
   push:
-    branches: [ main ] # change if you deploy from another branch
+    branches: [ main ]   # change if you deploy from another branch
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      SURGE_DOMAIN: ${{ secrets.SURGE_DOMAIN }}
+      SURGE_TOKEN:  ${{ secrets.SURGE_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 
@@ -14,33 +19,38 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - run: npm ci
+      - name: Install deps
+        run: npm ci
 
-      # Build your site (edit this if your build script is different)
-      - run: npm run build
+      - name: Build
+        run: npm run build
 
-      # Make SPA routing work (copies index -> 200 if folder exists)
-      - name: Add 200.html for SPA (dist)
-        if: ${{ hashFiles('dist/index.html') != '' }}
-        run: cp dist/index.html dist/200.html
-      - name: Add 200.html for SPA (build)
-        if: ${{ hashFiles('build/index.html') != '' }}
-        run: cp build/index.html build/200.html
-
-      - run: npm i -g surge
-
-      # Deploy dist/ (Vite, many static builds)
-      - name: Deploy dist
-        if: ${{ hashFiles('dist/**') != '' }}
+      - name: Pick build directory (dist or build)
+        id: pickdir
         run: |
-          DOMAIN=${{ secrets.SURGE_DOMAIN }}
-          if [ -z "$DOMAIN" ]; then DOMAIN=$(node -e "console.log('')"); fi
-          surge ./dist "$DOMAIN" --token ${{ secrets.SURGE_TOKEN }}
+          if [ -d dist ] && [ -f dist/index.html ]; then
+            echo "dir=dist" >> $GITHUB_OUTPUT
+          elif [ -d build ] && [ -f build/index.html ]; then
+            echo "dir=build" >> $GITHUB_OUTPUT
+          else
+            echo "No dist/ or build/ with index.html found after build."
+            exit 1
+          fi
+          echo "Using $(cat $GITHUB_OUTPUT)"
 
-      # Deploy build/ (Create React App)
-      - name: Deploy build
-        if: ${{ hashFiles('build/**') != '' }}
+      - name: Add 200.html for SPA routing
         run: |
-          DOMAIN=${{ secrets.SURGE_DOMAIN }}
-          if [ -z "$DOMAIN" ]; then DOMAIN=$(node -e "console.log('')"); fi
-          surge ./build "$DOMAIN" --token ${{ secrets.SURGE_TOKEN }}
+          cp "${{ steps.pickdir.outputs.dir }}/index.html" "${{ steps.pickdir.outputs.dir }}/200.html"
+
+      - name: Install Surge
+        run: npm i -g surge
+
+      - name: Deploy to Surge
+        run: |
+          if [ -z "$SURGE_TOKEN" ]; then
+            echo "SURGE_TOKEN secret is missing"; exit 1
+          fi
+          if [ -z "$SURGE_DOMAIN" ]; then
+            echo "SURGE_DOMAIN secret is missing"; exit 1
+          fi
+          surge "./${{ steps.pickdir.outputs.dir }}" "$SURGE_DOMAIN" --token "$SURGE_TOKEN"
